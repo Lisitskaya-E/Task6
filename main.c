@@ -1,5 +1,6 @@
 #include <stdio.h>
-#include "bmpDrawing.h"
+#include <graphics.h>
+#include <math.h>
 
 void fractal(int x1, int y1, int x2, int y2, int l)
 {
@@ -22,16 +23,24 @@ void fractal(int x1, int y1, int x2, int y2, int l)
         fractal(m2_1, n1, m2_2, n2, l-1);
         fractal(m2_1, n2_1, m2_2, n2_2, l-1);
     };
-    drawLine(x1, y1, x1, y2,2,RED);
-    drawLine(x1, (y1+y2)/2, x2, (y1+y2)/2, 2, RED);
-    drawLine(x2, y2, x2, y1, 2, RED );
+    line(x1, y1, x1, y2);
+    line(x1, (y1+y2)/2, x2, (y1+y2)/2);
+    line(x2, y2, x2, y1);
 }
 
-int main() {
+int main()
+{
+    int gd = DETECT;
+    int gm;
     int n;
     scanf("%d", &n);
-    create("frac.bmp", 800, 800);
+    initgraph(&gd, &gm,"");
+    setcolor (3);
     fractal(300, 300, 500, 500, n);
-    writeFile();
+
+
+    readkey();
+    closegraph();
     return 0;
 }
+
