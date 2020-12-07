@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1607350394 source:w:\new_papka\lz\main.c
+	<stdio.h>
+	<graphics.h>
+	<math.h>
+
